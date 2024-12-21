@@ -1,9 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import reservationReducer from "../redux/reservationSlice";
+import rootReducer from "./rootReducer";
 
 const store = configureStore({
-  reducer: {
-    reservation: reservationReducer,
-  },
+  reducer: rootReducer,
 });
 export default store;
