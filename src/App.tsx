@@ -9,9 +9,6 @@ import Contact from "./pages/Contact";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-  // let apiUrl = import.meta.env.VITE_APP_BASE_URL;
-  // console.log(apiUrl);
-
   return (
     <>
       <Navbar />
