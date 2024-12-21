@@ -1,5 +1,9 @@
 const About = () => {
-  return <div>About</div>;
+  return (
+    <div className="bg-image">
+      <div className="overlay"></div>
+    </div>
+  );
 };
 
 export default About;
