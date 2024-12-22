@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
@@ -43,4 +43,21 @@
   .bg-image-reserv .overlay h1 {
     font-size: 1.5rem;
   }
+}
+
+.tables-container {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 350px !important;
+}
+.tables-container * {
+  color: black !important;
+}
+.tables-container img {
+  width: 100%;
+}
+.tables-container .table {
+  cursor: pointer;
 }/*# sourceMappingURL=reservation.css.map */
