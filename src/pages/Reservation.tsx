@@ -1,11 +1,10 @@
-import '../assets/style/reservation.css'
+import "../assets/style/reservation.css";
+import HeroReserv from "../components/HeroReserv";
 const Reservation = () => {
   return (
-    <div className="bg-image-reserv">
-      <div className="overlay">
-      <h1>ONLINE RESERVATION</h1>
-      </div>
-    </div>
+    <>
+      <HeroReserv />
+    </>
   );
 };
 
