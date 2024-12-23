@@ -4,13 +4,13 @@ import axios from "axios";
 import { Meals } from "../model";
 
 interface ReservationState {
-  tables: Meals[];
+  meals: Meals[];
   status: string;
   error: string | null;
 }
 
 const initialState: ReservationState = {
-  tables: [],
+  meals: [],
   status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
 };
@@ -41,7 +41,7 @@ const mealsSlice = createSlice({
       })
       .addCase(fetchMeals.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.tables = action.payload;
+        state.meals = action.payload;
       })
       .addCase(fetchMeals.rejected, (state, action) => {
         state.status = "failed";

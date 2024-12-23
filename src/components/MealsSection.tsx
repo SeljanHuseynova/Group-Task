@@ -5,7 +5,9 @@ import { AppDispatch } from "../redux/store";
 
 const MealsSection = () => {
   const dispach = useDispatch<AppDispatch>();
-  const meals = useSelector((state: any) => state.rootReducer.meals);
+  const {meals,error,status} = useSelector((state: any) => state.rootReducer.meals);
+  error
+  status
   console.log(meals);
   useEffect(() => {
     dispach(fetchMeals());
