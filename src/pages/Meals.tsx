@@ -1,8 +1,10 @@
+import HeroMeals from "../components/HeroMeals";
+import "../assets/style/meals.css"
 const Meals = () => {
   return (
-    <div className="bg-image">
-      <div className="overlay"></div>
-    </div>
+    <>
+    <HeroMeals/>
+    </>
   );
 };
 
