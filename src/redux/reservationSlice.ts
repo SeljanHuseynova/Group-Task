@@ -1,14 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { headers, reservUrl } from "../config";
 import axios from "axios";
+import {Table} from '../model';
 
-interface Table {
-  id: number;
-  isReserved: boolean;
-  reservedPersonName: string |null;
-  reservedPersonSurname: string | null;
-  phoneNumber: string| null;
-}
+
 
 interface ReservationState {
   tables: Table[];

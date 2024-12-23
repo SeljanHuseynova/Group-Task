@@ -3,7 +3,9 @@ const Homepage = () => {
   return (
     <div className='bg-container mb-5'>
     <div className="bg-image">
-      <div className="overlay"></div>
+      <div className="overlay">
+        <h1>Contact us</h1>
+      </div>
     </div>
     </div>
   );
