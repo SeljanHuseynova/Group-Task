@@ -7,6 +7,8 @@ import Reservation from "./pages/Reservation";
 import Meals from "./pages/Meals";
 import Contact from "./pages/Contact";
 import NotFoundPage from "./pages/NotFoundPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
+      <ToastContainer /> 
     </>
   );
 }

@@ -1,6 +1,37 @@
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   position: absolute;
   background-color: #09080e;
   background-color: #111;
+}
+.footer h3, .footer h1 {
+  margin-bottom: 22px;
+  font-family: "Cormorant Garamond", serif !important;
+}
+.footer .part {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+}
+.footer .part .times {
+  display: flex;
+  flex-direction: column;
+}
+.footer .part .times .time, .footer .part .times .time-last {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.footer .part .times .time p, .footer .part .times .time span, .footer .part .times .time-last p, .footer .part .times .time-last span {
+  margin-bottom: 10px;
+  color: #e1e1e1 !important;
+}
+.footer footer {
+  padding: 15px;
+  border-bottom: 0.005rem solid #aaa;
 }/*# sourceMappingURL=footer.css.map */

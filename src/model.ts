@@ -1,7 +1,9 @@
-export interface Table {
-    id: number;
-    isReserved: boolean;
-    reservedPersonName: string |null;
-    reservedPersonSurname: string | null;
-    phoneNumber: string| null;
-  }
+export interface ICustomerData {
+  name: string | null;
+  surname?: string | null;
+  phoneNumber: string | null;
+}
+export interface Table extends ICustomerData {
+  id: number;
+  isReserved: boolean;
+}
