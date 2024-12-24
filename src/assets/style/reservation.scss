@@ -36,8 +36,8 @@
     }
   }
 }
-.title{
-  h1{
+.title {
+  h1 {
     font-size: 4rem;
     margin-bottom: 3.5rem;
     font-family: "Cormorant Garamond", serif !important;
@@ -45,6 +45,9 @@
   }
 }
 .tables-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -62,32 +65,62 @@
     font-size: bold;
   }
   .table {
+    position: relative;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
       rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    &:hover {
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    }
     overflow: hidden;
     z-index: 2;
     border-radius: 80px;
     width: 100%;
+    cursor: pointer;
     img {
       width: 100%;
       height: 100%;
       transition: transform 0.5s ease-in-out;
-      &:hover {
-        transform: scale(1.2);
-      }
+    }
+    &:hover img {
+      transform: scale(1.2);
     }
 
-    cursor: pointer;
     .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: #fff !important;
+      position: relative;
+    }
+
+    .status {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff !important;
+      background: rgba(176, 173, 173, 0.9);
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 1rem;
+      display: none;
+   padding: 10px;
+    }
+
+    &:hover .status {
+      display: block;
     }
   }
+  .available {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
 
-  
+    }
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    button{
+      align-self: center;
+    }
 }
 
 .modal-overlay {
@@ -102,8 +135,6 @@
   justify-content: center;
   z-index: 1000;
 }
-
-
 
 .modal-content {
   background: white !important;

@@ -53,6 +53,8 @@
 }
 
 .tables-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -70,6 +72,7 @@
   font-size: bold;
 }
 .tables-container .table {
+  position: relative;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   overflow: hidden;
   z-index: 2;
@@ -77,19 +80,48 @@
   width: 100%;
   cursor: pointer;
 }
-.tables-container .table:hover {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
 .tables-container .table img {
   width: 100%;
   height: 100%;
   transition: transform 0.5s ease-in-out;
 }
-.tables-container .table img:hover {
+.tables-container .table:hover img {
   transform: scale(1.2);
 }
 .tables-container .table .overlay {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #fff !important;
+  position: relative;
+}
+.tables-container .table .status {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff !important;
+  background: rgba(176, 173, 173, 0.9);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  display: none;
+  padding: 10px;
+}
+.tables-container .table:hover .status {
+  display: block;
+}
+.tables-container .available {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+form button {
+  align-self: center;
 }
 
 .modal-overlay {

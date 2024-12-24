@@ -74,11 +74,6 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/meals" className="link">
-                    Meals
-                  </Link>
-                </li>
-                <li className="nav-item">
                   <Link to="/reservation" className="link">
                     Reservation
                   </Link>
