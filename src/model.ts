@@ -7,3 +7,11 @@ export interface Table extends ICustomerData {
   id: number;
   isReserved: boolean;
 }
+
+export interface Meals {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+}

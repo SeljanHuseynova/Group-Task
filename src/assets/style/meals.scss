@@ -1,0 +1,37 @@
+.bg-container-meals {
+  margin-top: 550px;
+  .bg-image {
+    width: 100%;
+    height: 88vh;
+    background-image: url("../images/homepage_bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    .overlay {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+      .content {
+        p {
+          color: white;
+          font-size: 2rem;
+          text-align: center;
+          padding-top: 18%;
+          font-family: "Jost", serif;
+          font-size: 25px;
+        }
+        h1 {
+          color: white;
+          font-size: 3rem;
+          text-align: center;
+          font-size: 80px;
+          font-family: "Cormorant Garamond", serif !important;
+        }
+      }
+    }
+  }
+}

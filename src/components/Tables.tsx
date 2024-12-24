@@ -27,7 +27,7 @@ const Tables = () => {
 
   const dispatch = useDispatch<AppDispatch>();
   const { tables, error, status } = useSelector(
-    (state: RootState) => state.reservation
+    (state: RootState) => state.rootReducer.reservation
   );
 
   useEffect(() => {
