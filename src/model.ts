@@ -15,3 +15,16 @@ export interface Meals {
   description: string;
   image: string;
 }
+
+export interface IContact {
+  name:string;
+  email:string;
+  phoneNumber:string;
+  message:string;
+
+}
+
+export interface IRequest  extends IContact{
+  id:number;
+}
+
