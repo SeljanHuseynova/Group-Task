@@ -58,6 +58,12 @@ header { *{
       text-decoration: none;
       font-size: 17px;
     }
+    .link:active {
+      color: #ff9900 !important;
+      transform: scale(0.95) !important;
+    }
+    
+    
   }
   .offcanvas {
     transition: width 0.3s ease-in-out;

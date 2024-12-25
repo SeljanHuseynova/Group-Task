@@ -1,9 +1,9 @@
 const HeroContact = () => {
   return (
-    <div className="bg-container">
+    <div className="bg-container-contact">
     <div className="bg-image-contact">
       <div className="overlay">
-        <h1>Contact</h1>
+        <h1>CONTACT US</h1>
       </div>
       </div>
   </div>

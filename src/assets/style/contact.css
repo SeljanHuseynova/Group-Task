@@ -1,6 +1,9 @@
-.bg-container .bg-image-contact {
+.bg-container-contact {
+  margin-top: 350px;
+}
+.bg-container-contact .bg-image-contact {
   width: 100%;
-  height: 70vh;
+  height: 77vh;
   background-image: url("../images/contact-bg.jpg");
   background-repeat: no-repeat;
   background-position: center center;
@@ -10,7 +13,7 @@
   left: 0;
   z-index: -1;
 }
-.bg-container .bg-image-contact .overlay {
+.bg-container-contact .bg-image-contact .overlay {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
@@ -19,28 +22,186 @@
   align-items: center;
   justify-content: center;
 }
-.bg-container .bg-image-contact .overlay h1 {
+.bg-container-contact .bg-image-contact .overlay h1 {
+  color: #fff;
   margin-top: 6rem;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   font-family: "Cormorant Garamond", serif !important;
 }
 @media (max-width: 1250px) {
-  .bg-container .bg-image-contact .overlay h1 {
+  .bg-container-contact .bg-image-contact .overlay h1 {
     font-size: 2.8rem;
   }
 }
 @media (max-width: 670px) {
-  .bg-container .bg-image-contact .overlay h1 {
+  .bg-container-contact .bg-image-contact .overlay h1 {
     font-size: 2.4rem;
   }
 }
 @media (max-width: 450px) {
-  .bg-container .bg-image-contact .overlay h1 {
+  .bg-container-contact .bg-image-contact .overlay h1 {
     font-size: 2rem;
   }
 }
 @media (max-width: 395px) {
-  .bg-container .bg-image-contact .overlay h1 {
+  .bg-container-contact .bg-image-contact .overlay h1 {
     font-size: 1.5rem;
   }
+}
+
+.location-part {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.location-part .map-btn {
+  text-decoration: none;
+  color: #fff;
+  background-color: #dd5903;
+  padding: 7px 20px;
+}
+.location-part .map-btn:hover {
+  background-color: rgba(246, 118, 33, 0.9803921569);
+}
+.location-part .img {
+  padding: 40px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .location-part .img {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 1100px) {
+  .location-part .img {
+    padding: 20px;
+  }
+}
+@media (max-width: 580px) {
+  .location-part .img {
+    padding: 20px;
+  }
+}
+@media (max-width: 950px) {
+  .location-part .img {
+    padding: 10px;
+  }
+}
+.location-part .img img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.location-part .content {
+  border-right: 1px solid #efefef;
+  margin-top: 0 !important;
+  margin: 60px;
+}
+@media (max-width: 768px) {
+  .location-part .content {
+    border: none;
+  }
+}
+.location-part .content .bottom {
+  margin-bottom: 25px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .location-part .content .bottom {
+    gap: 12px;
+    margin-top: 10px;
+  }
+}
+.location-part .content .bottom .part {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.location-part .content .bottom .part span:hover {
+  color: #dd5903;
+  cursor: pointer;
+}
+.location-part .content p {
+  margin-right: 40px;
+}
+@media (max-width: 900px) {
+  .location-part .content p {
+    font-size: 15px !important;
+  }
+}
+@media (max-width: 950px) {
+  .location-part .content p {
+    margin-right: 10px;
+  }
+}
+.location-part .content h1 {
+  font-weight: 700;
+  font-size: 50px;
+  font-family: "Cormorant Garamond", serif !important;
+  margin-bottom: 20px;
+}
+@media (max-width: 900px) {
+  .location-part .content h1 {
+    font-size: 28px !important;
+  }
+}
+@media (max-width: 1180px) {
+  .location-part .content h1 {
+    font-size: 38px;
+  }
+}
+@media (max-width: 1180px) {
+  .location-part .content {
+    margin: 30px;
+  }
+}
+@media (max-width: 1100px) {
+  .location-part .content {
+    margin: 15px;
+  }
+}
+@media (max-width: 950px) {
+  .location-part .content {
+    margin: 0;
+  }
+}
+.location-part .content #title {
+  font-family: "Cormorant Garamond", serif !important;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #dd5903;
+}
+
+.contact-section {
+  background-color: #faf9f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-section form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.contact-section input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #faf9f8;
+}
+.contact-section button {
+  margin-top: 10px;
+  align-self: start;
+}
+.contact-section .message {
+  background-color: #faf9f8;
+  width: 100%;
+  resize: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }/*# sourceMappingURL=contact.css.map */
