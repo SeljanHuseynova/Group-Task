@@ -20,6 +20,7 @@
   justify-content: center;
 }
 .bg-image-reserv .overlay h1 {
+  color: #fff;
   margin-top: 6rem;
   font-size: 3.5rem;
   font-family: "Cormorant Garamond", serif !important;
@@ -62,9 +63,6 @@
   margin-top: 370px !important;
   margin-bottom: 50px !important;
 }
-.tables-container * {
-  color: black !important;
-}
 .tables-container p {
   font-size: 24px;
   font-family: "Cormorant Garamond", serif !important;
@@ -98,12 +96,23 @@
   left: 50%;
   transform: translateX(-50%);
   color: #fff !important;
-  background: rgba(176, 173, 173, 0.9);
-  padding: 5px 10px;
+  background-color: #DD5903;
+  padding: 6px 15px;
   border-radius: 5px;
   font-size: 1rem;
   display: none;
-  padding: 10px;
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 .tables-container .table:hover .status {
   display: block;
@@ -118,10 +127,48 @@ form {
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 10px;
+}
+form input {
+  margin-bottom: 5px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #e1e1e1;
+  width: 100%;
 }
 form button {
+  font-size: 700;
+  background-color: #DD5903;
+  color: #fff !important;
+  margin-top: 6px;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
   align-self: center;
+  padding: 6px 40px;
+}
+form .error {
+  font-weight: bold;
+  font-size: 14.5px !important;
+  margin: 0 !important;
+  color: red;
+}
+
+.error {
+  color: red !important;
+}
+
+.cancel-btn {
+  font-size: 700;
+  background-color: #DD5903;
+  color: #fff !important;
+  margin-top: 6px;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  align-self: center;
+  padding: 6px 40px;
 }
 
 .modal-overlay {
@@ -146,15 +193,40 @@ form button {
   max-width: 400px;
   width: 90%;
 }
+@media (max-width: 420px) {
+  .modal-content {
+    padding: 1.2rem;
+    margin: 10px;
+  }
+}
+
+.modal-content span {
+  color: #DD5903 !important;
+}
+@media (max-width: 420px) {
+  .modal-content span {
+    font-size: 0.7rem;
+  }
+}
 
 .modal-content h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
+@media (max-width: 420px) {
+  .modal-content h2 {
+    font-size: 1.5rem;
+  }
+}
 
 .modal-content p {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
+}
+@media (max-width: 420px) {
+  .modal-content p {
+    font-size: 1rem;
+  }
 }
 
 .close-button {

@@ -12,7 +12,7 @@ const MealsSection = () => {
   useEffect(() => {
     dispach(fetchMeals());
   }, [dispach]);
-  return <div>MealsSection</div>;
-};
+  return <div></div>;
+}
 
 export default MealsSection;
