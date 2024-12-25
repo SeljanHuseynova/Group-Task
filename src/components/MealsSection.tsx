@@ -12,7 +12,14 @@ const MealsSection = () => {
   useEffect(() => {
     dispach(fetchMeals());
   }, [dispach]);
-  return <div>MealsSection</div>;
+  return <div>
+    {meals.map((meal: any) => (
+      <div key={meal.id}>
+        <h2>{meal.Name}</h2>
+        <p>{meal.Description}</p>
+      </div>
+    ))}
+  </div>;
 };
 
 export default MealsSection;

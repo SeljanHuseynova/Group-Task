@@ -19,7 +19,7 @@
   z-index: -1;
 }
 .bg-container-meals .bg-image .overlay .content p {
-  color: white;
+  color: black !important;
   font-size: 2rem;
   text-align: center;
   padding-top: 18%;
@@ -27,7 +27,6 @@
   font-size: 25px;
 }
 .bg-container-meals .bg-image .overlay .content h1 {
-  color: white;
   font-size: 3rem;
   text-align: center;
   font-size: 80px;
