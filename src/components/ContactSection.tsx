@@ -3,7 +3,7 @@ import ContactRequest from "./ContactRequest";
 
 const ContactSection = () => {
   return (
-    <div className="contact-section row p-5">
+    <div className="contact-section row p-4 m-1">
       <div className="col-6 col-sm-6">
         <div className="contect">
           <span>GET IN TOUCH</span>

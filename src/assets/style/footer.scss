@@ -1,12 +1,12 @@
-.footer { 
-  *{
+.footer {
+  * {
     color: #fff;
   }
 
-  h3,h1{
+  h3,
+  h1 {
     margin-bottom: 22px;
     font-family: "Cormorant Garamond", serif !important;
- 
   }
   display: flex;
   align-items: center;
@@ -15,29 +15,80 @@
   position: absolute;
   background-color: #09080e;
   background-color: #111;
-.part {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  flex-direction: column;
-  .times {
-    display: flex;
-    flex-direction: column;
-    .time,.time-last {
-    
-      p,span {
-        margin-bottom: 10px;
-        color: #e1e1e1 !important;
-      }
-      font-size: 14px;
+  .part {
+    .contact {
+      margin-bottom: 10px;
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
+      align-items: center;
+      align-items: center;
+      gap: 10px;
+      p {
+        font-size: 14px;
+        color: #e1e1e1;
+        margin: 0;
+      }
+      .icon {
+        font-size: 19px;
+      }
+    }
+    p {
+      font-size: 14px;
+      color: #e1e1e1;
+    }
+    .icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      .icon {
+        font-size: 17px;
+      }
+    }
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    .times {
+      display: flex;
+      flex-direction: column;
+      .time,
+      .time-last {
+        p,
+        span {
+          margin-bottom: 10px;
+          color: #e1e1e1 !important;
+        }
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
     }
   }
-}
-footer {
-  padding: 15px;
-  border-bottom: 0.005rem solid #aaa;
-}
+  footer {
+    padding: 15px;
+    .top-footer {
+      padding-bottom: 40px;
+      border-bottom: 0.005rem solid #312f2f;
+    }
+    .bottom-footer {
+      padding-top: 40px;
+      * {
+        color: #e1e1e1;
+        font-size: 14px;
+      }
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @media (max-width: 810px) {
+        flex-direction: column;
+        gap: 30px;
+      }
+      .right {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+    }
+  }
 }
