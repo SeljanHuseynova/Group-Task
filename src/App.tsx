@@ -8,12 +8,14 @@ import Meals from "./pages/Meals";
 import Contact from "./pages/Contact";
 import NotFoundPage from "./pages/NotFoundPage";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
+import "react-toastify/dist/ReactToastify.css";
+import ScrollToTop from "./components/ScrollTop";
 
 function App() {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<About />} />
@@ -23,7 +25,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
-      <ToastContainer /> 
+      <ToastContainer />
     </>
   );
 }

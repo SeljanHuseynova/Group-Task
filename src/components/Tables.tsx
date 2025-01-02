@@ -1,15 +1,17 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { RootState, AppDispatch } from "../redux/store";
-import { toast } from 'react-toastify';
+import { AppDispatch } from "../redux/store";
+import { toast } from "react-toastify";
 import {
   bookATable,
   cancelReservation,
   fetchTables,
 } from "../redux/reservationSlice";
-import tablePhoto from "../assets/images/table2.jpg";
-import { ICustomerData, Table } from "../model";
 
+import { ICustomerData, Table } from "../model";
+import TablesContainer from "./TablesContainer";
+
+import { GoArrowRight } from "react-icons/go";
 const Tables = () => {
   const [isModal, setIsModal] = useState(false);
   const [selectedTable, setSelectedTable] = useState<Table | null>(null);
@@ -24,16 +26,11 @@ const Tables = () => {
     surname: "",
     phoneNumber: "",
   });
-
   const dispatch = useDispatch<AppDispatch>();
-  const { tables, error, status } = useSelector(
-    (state: RootState) => state.rootReducer.reservation
-  );
 
   useEffect(() => {
     dispatch(fetchTables());
   }, [dispatch]);
-
   const validate = () => {
     const newErrors: ICustomerData = { name: "", surname: "", phoneNumber: "" };
     const nameRegex = /^[A-Za-z]+$/;
@@ -59,8 +56,7 @@ const Tables = () => {
 
     return hasNoErrors;
   };
-
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setCustomerData((prevData) => ({
       ...prevData,
@@ -71,25 +67,33 @@ const Tables = () => {
       [name]: "",
     }));
   };
-
   const openModal = (table: Table) => {
     setSelectedTable(table);
     setIsModal(true);
+    setCustomerData({
+      name: "",
+      surname: "",
+      phoneNumber: "",
+    });
+    setErrors({
+      name: "",
+      surname: "",
+      phoneNumber: "",
+    });
   };
-
   const closeModal = () => {
     setIsModal(false);
     setSelectedTable(null);
+    setIsCancel(false);
   };
-
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validate()) {
       return;
     }
-   
-    toast.success('Reservation was successful!', {
+
+    toast.success("Reservation was successful!", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -98,8 +102,8 @@ const Tables = () => {
       draggable: true,
       progress: undefined,
       theme: "colored",
-      });
-    
+    });
+
     dispatch(
       bookATable({
         tableId: selectedTable?.id || 0,
@@ -123,8 +127,7 @@ const Tables = () => {
         console.error("Error booking table:", error);
       });
   };
-
-  const handleCancel = (e: any) => {
+  const handleCancel = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validate()) {
@@ -152,7 +155,7 @@ const Tables = () => {
           console.error("Error cancelling reservation:", error);
         });
     } else {
-      toast.error('Customer details do not match the reservation.', {
+      toast.error("Customer details do not match the reservation.", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -161,36 +164,15 @@ const Tables = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        });
+      });
     }
   };
-
-  console.log(selectedTable);
-  console.log(customerData);
   return (
     <div className="tables-container">
       <div className="title">
         <h1>Book A Table</h1>
       </div>
-      <div className="tables row container g-4">
-        {status === "loading" && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
-        {tables?.map((table) => (
-          <div className="col-6 col-lg-3" key={table.id}>
-            <div className="table" onClick={() => openModal(table)}>
-              <div className="overlay">
-                <img src={tablePhoto} alt={`Table ${table.id}`} />
-                <div className="status">
-                  {table.isReserved ? "Not Available" : "Available"}
-                </div>
-              </div>
-            </div>
-            <div className="tables-details">
-              <p>Table: {table.id}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <TablesContainer openModal={openModal}/>
 
       {/* Modal */}
       {isModal && (
@@ -201,7 +183,7 @@ const Tables = () => {
             </button>
             <span>Online Reservation</span>
             <h2>BOOK A TABLE</h2>
-            <p>Selected Table ID: {selectedTable?.id}</p>
+            <p>Table: {selectedTable?.id}</p>
             {selectedTable?.isReserved ? (
               <div className="not-available">
                 {isCancel ? (
@@ -234,13 +216,13 @@ const Tables = () => {
                     {errors.phoneNumber && (
                       <p className="error">{errors.phoneNumber}</p>
                     )}
-                    <button>Cancel Reservation</button>
+                    <button className="cancel-btn">Cancel Reservation</button>
                   </form>
                 ) : (
                   <>
                     <p>This table is not available</p>
-                    <button onClick={() => setIsCancel(true)}>
-                      Cancel Reservation
+                    <button onClick={() => setIsCancel(true)} className="cancel-btn">
+                      Cancel <GoArrowRight className="arrow" />
                     </button>
                   </>
                 )}

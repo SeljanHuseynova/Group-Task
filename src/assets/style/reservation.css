@@ -46,13 +46,6 @@
   }
 }
 
-.title h1 {
-  font-size: 4rem;
-  margin-bottom: 3.5rem;
-  font-family: "Cormorant Garamond", serif !important;
-  border-bottom: 0.05rem solid black;
-}
-
 .tables-container {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -62,6 +55,25 @@
   justify-content: center;
   margin-top: 370px !important;
   margin-bottom: 50px !important;
+}
+.tables-container .tables-details {
+  text-align: center;
+}
+.tables-container .title h1 {
+  font-size: 4rem;
+  margin-bottom: 3.5rem;
+  font-family: "Cormorant Garamond", serif !important;
+  border-bottom: 0.1rem solid #d36c26;
+}
+@media (max-width: 700px) {
+  .tables-container .title h1 {
+    font-size: 3.3rem;
+  }
+}
+@media (max-width: 500px) {
+  .tables-container .title h1 {
+    font-size: 2.7rem;
+  }
 }
 .tables-container p {
   font-size: 24px;
@@ -96,13 +108,25 @@
   left: 50%;
   transform: translateX(-50%);
   color: #fff !important;
-  background-color: #DD5903;
+  background-color: #af5010;
   padding: 6px 15px;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   display: none;
   animation: fadeIn 0.5s ease-out forwards;
   opacity: 0;
+}
+@media (max-width: 1200px) {
+  .tables-container .table .status {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}
+@media (max-width: 800px) {
+  .tables-container .table .status {
+    font-size: 0.6rem;
+    padding: 4px 7px;
+  }
 }
 @keyframes fadeIn {
   0% {
@@ -169,6 +193,11 @@ form .error {
   border-radius: 10px;
   align-self: center;
   padding: 6px 40px;
+}
+.cancel-btn .arrow {
+  margin-left: 4px;
+  margin-top: -2px;
+  font-size: 20px;
 }
 
 .modal-overlay {

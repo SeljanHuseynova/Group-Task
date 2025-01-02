@@ -27,6 +27,7 @@ const ContactRequest = () => {
     const nameRegex = /^[A-Za-z]+$/;
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const phoneRegex = /^\+994\d{9}$/;
+    const messageRegex = /^.{10,200}$/;
 
     if (!formData.name || !nameRegex.test(formData.name)) {
       newErrors.name = "Name must contain only letters.";
@@ -38,8 +39,8 @@ const ContactRequest = () => {
       newErrors.phoneNumber =
         "Phone number must be in the format +994XXXXXXXXX.";
     }
-    if (!formData.message) {
-      newErrors.message = "Message must be between 10 and 400 characters.";
+    if (!formData.message || !messageRegex.test(formData.message)) {
+      newErrors.message = "Message must be between 10 and 200 characters.";
     }
 
     setErrors(newErrors);
@@ -51,7 +52,7 @@ const ContactRequest = () => {
     );
   };
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -97,48 +98,58 @@ const ContactRequest = () => {
   };
 
   return (
-    <div className="contact">
-      <form onSubmit={handleSubmit}>
-        <label>Your Full Name</label>
-        <input
-          type="text"
-          name="name"
-          className="name"
-          onChange={handleChange}
-          value={formData.name}
-        />
-        {errors.name && <p className="error">{errors.name}</p>}
+    <form onSubmit={handleSubmit}>
+      <div className="top">
+        <div className="name">
+          <label>Your Full Name</label>
+          <input
+            type="text"
+            name="name"
+            className="name"
+            onChange={handleChange}
+            value={formData.name}
+          />
+          {errors.name && <p className="error">{errors.name}</p>}
+        </div>
+        <div className="email">
+          <label>Your Email</label>
+          <input
+            type="text"
+            name="email"
+            onChange={handleChange}
+            value={formData.email}
+          />
+          {errors.email && <p className="error">{errors.email}</p>}
+        </div>
+      </div>
 
-        <label>Your Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={handleChange}
-          value={formData.email}
-        />
-        {errors.email && <p className="error">{errors.email}</p>}
+      <div className="bottom">
+        <div className="number">
+          <label>Your Phone Number</label>
+          <input
+            type="text"
+            name="phoneNumber"
+            onChange={handleChange}
+            value={formData.phoneNumber}
+          />
+          {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
+        </div>
 
-        <label>Your Phone Number</label>
-        <input
-          type="text"
-          name="phoneNumber"
-          onChange={handleChange}
-          value={formData.phoneNumber}
-        />
-        {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
-
-        <label>Your Message</label>
-        <input
-          value={formData.message}
-          name="message"
-          className="message"
-          onChange={handleChange}
-        ></input>
-        {errors.message && <p className="error">{errors.message}</p>}
-
+        <div className="message-input">
+          <label>Your Message</label>
+          <textarea
+            value={formData.message}
+            name="message"
+            className="message"
+            onChange={handleChange}
+          ></textarea>
+          {errors.message && <p className="error">{errors.message}</p>}
+        </div>
+      </div>
+      <div className="part">
         <button>SEND</button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 
