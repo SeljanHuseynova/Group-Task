@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { RootState, AppDispatch } from "../redux/store";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import {
   bookATable,
   cancelReservation,
@@ -80,6 +80,11 @@ const Tables = () => {
   const closeModal = () => {
     setIsModal(false);
     setSelectedTable(null);
+    setErrors({
+      name: "",
+      surname: "",
+      phoneNumber: "",
+    });
   };
 
   const handleSubmit = (e: any) => {
@@ -88,8 +93,8 @@ const Tables = () => {
     if (!validate()) {
       return;
     }
-   
-    toast.success('Reservation was successful!', {
+
+    toast.success("Reservation was successful!", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -98,8 +103,8 @@ const Tables = () => {
       draggable: true,
       progress: undefined,
       theme: "colored",
-      });
-    
+    });
+
     dispatch(
       bookATable({
         tableId: selectedTable?.id || 0,
@@ -138,7 +143,16 @@ const Tables = () => {
     ) {
       dispatch(cancelReservation({ tableId: selectedTable.id || 0 }))
         .then(() => {
-          console.log("Reservation canceled successfully.");
+          toast.success("Reservation canceled successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
           dispatch(fetchTables());
           setCustomerData({
             name: "",
@@ -152,7 +166,7 @@ const Tables = () => {
           console.error("Error cancelling reservation:", error);
         });
     } else {
-      toast.error('Customer details do not match the reservation.', {
+      toast.error("Customer details do not match the reservation.", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -161,7 +175,7 @@ const Tables = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        });
+      });
     }
   };
 
@@ -224,7 +238,7 @@ const Tables = () => {
                     {errors.surname && (
                       <p className="error">{errors.surname}</p>
                     )}
-                    <label>PhoneNumber</label>
+                    <label>Phone Number</label>
                     <input
                       name="phoneNumber"
                       type="text"
@@ -239,7 +253,7 @@ const Tables = () => {
                 ) : (
                   <>
                     <p>This table is not available</p>
-                    <button onClick={() => setIsCancel(true)}>
+                    <button onClick={() => setIsCancel(true)} className="cancel-btn">
                       Cancel Reservation
                     </button>
                   </>
@@ -264,7 +278,7 @@ const Tables = () => {
                     value={customerData.surname || ""}
                   />
                   {errors.surname && <p className="error">{errors.surname}</p>}
-                  <label>PhoneNumber</label>
+                  <label>Phone Number</label>
                   <input
                     name="phoneNumber"
                     type="text"
@@ -274,7 +288,7 @@ const Tables = () => {
                   {errors.phoneNumber && (
                     <p className="error">{errors.phoneNumber}</p>
                   )}
-                  <button>Book A Table</button>
+                  <button>BOOK NOW</button>
                 </form>
               </div>
             )}

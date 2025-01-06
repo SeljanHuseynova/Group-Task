@@ -6,6 +6,9 @@ header {
   justify-content: center;
   flex-direction: column;
 }
+header * {
+  color: #fff !important;
+}
 header .top-nav {
   border-bottom: 0.005rem solid #aaa;
   width: 100%;

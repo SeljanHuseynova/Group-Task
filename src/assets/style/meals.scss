@@ -1,5 +1,6 @@
 .bg-container-meals {
-  margin-top: 550px;
+  width: 100%;
+  height: 88vh;
   .bg-image {
     width: 100%;
     height: 88vh;
@@ -17,20 +18,77 @@
       z-index: -1;
       .content {
         p {
-          color: black !important;
           font-size: 2rem;
           text-align: center;
           padding-top: 18%;
-          font-family: "Jost", serif;
+          font-family: "Jost", serif !important;
           font-size: 25px;
+          color: #fff;
         }
         h1 {
           font-size: 3rem;
           text-align: center;
           font-size: 80px;
           font-family: "Cormorant Garamond", serif !important;
+          color: #fff;
         }
       }
+    }
+  }
+}
+.menuList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 150px;
+  div {
+    column-gap: 10px;
+    width: 540px;
+    display: flex;
+    .meal-img {
+      width: 72px;
+      height: 72px;
+    }
+    .meal-text {
+      display: flex;
+      flex-direction: column;
+      h2 {
+        margin: 0;
+
+        font-family: "Cormorant Garamond", serif !important;
+      }
+      p {
+        margin-bottom: 50px;
+        color: #363636;
+        font-family: "Jost", serif;
+      }
+    }
+  }
+}
+.timeMeal {
+  padding: 0 !important;
+  font-size: 18px !important;
+}
+.orderDiv {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  button {
+    width: 200px;
+    height: 50px;
+    background-color: #dd5903;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-family: "Jost", serif;
+    transition: all 0.5s;
+    &:hover {
+      background-color: #c45104;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
     }
   }
 }
