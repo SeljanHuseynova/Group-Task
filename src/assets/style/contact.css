@@ -298,7 +298,7 @@
 }
 .contact-section form .error {
   font-size: 12px !important;
-  font-weight: 400;
+  font-weight: 360;
 }
 @media (max-width: 768px) {
   .contact-section form {
