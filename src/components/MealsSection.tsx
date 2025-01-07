@@ -44,9 +44,7 @@ const MealsSection = () => {
   return (
     <div>
       <div className="sort-container">
-        <label htmlFor="sort" style={{ marginRight: "10px" }}>
-          Sort by:
-        </label>
+        <label htmlFor="sort">Sort by:</label>
         <select
           id="sort"
           value={sortOption}
@@ -60,14 +58,12 @@ const MealsSection = () => {
       </div>
       <div className="menuList">
         {sortedMeals.map((meal: any) => (
-          <div key={meal.id}>
+          <div key={meal.id} className="meal-item">
             <div className="meal-img">
-              <img src={meal.img} alt="meal image" />
+              <img src={meal.img} alt={meal.Name} />
             </div>
             <div className="meal-text">
-              <div>
-                <h2>{meal.Name}</h2>
-              </div>
+              <h2>{meal.Name}</h2>
               <p>{meal.Description}</p>
               <p className="price">${meal.Price.toFixed(2)}</p>
             </div>
