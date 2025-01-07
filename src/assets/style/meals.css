@@ -60,7 +60,6 @@
   font-family: "Cormorant Garamond", serif !important;
 }
 .menuList div .meal-text p {
-  margin-bottom: 50px;
   color: #363636;
   font-family: "Jost", serif;
 }
@@ -92,4 +91,24 @@
 .orderDiv button a {
   text-decoration: none;
   color: #fff;
+}
+
+.sort-container {
+  margin-bottom: 20px;
+  text-align: right;
+  margin: 0 78px;
+}
+
+.sort-container label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.sort-container select {
+  padding: 8px 12px;
+  font-size: 14px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
 }/*# sourceMappingURL=meals.css.map */
