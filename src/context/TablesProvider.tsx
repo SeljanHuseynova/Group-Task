@@ -49,15 +49,15 @@ const TablesProvider: React.FC<{ children: React.ReactNode }> = ({
     const nameRegex = /^[A-Za-z]+$/;
     const phoneRegex = /^\+994\d{9}$/;
 
-    if (!customerData.name || !nameRegex.test(customerData.name)) {
+    if (!customerData.name || !nameRegex.test(customerData?.name)) {
       newErrors.name = "Name must contain only letters.";
     }
-    if (!customerData.surname || !nameRegex.test(customerData.surname)) {
+    if (!customerData.surname || !nameRegex.test(customerData?.surname)) {
       newErrors.surname = "Surname must contain only letters.";
     }
     if (
       !customerData.phoneNumber ||
-      !phoneRegex.test(customerData.phoneNumber)
+      !phoneRegex.test(customerData?.phoneNumber)
     ) {
       newErrors.phoneNumber =
         "Phone number must be in the format +994XXXXXXXXX.";

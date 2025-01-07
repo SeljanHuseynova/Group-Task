@@ -29,6 +29,18 @@ export interface IContact {
 export interface IRequest  extends IContact{
   id:number;
 }
+export interface contactState {
+  requests: IRequest[];
+  status: string;
+  error: string | null;
+}
+
+export interface ReservationState {
+  tables: Table[];
+  status: string;
+  error: string | null;
+}
+
 
 export interface ITablesContextProps {
   isModal: boolean;

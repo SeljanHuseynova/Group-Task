@@ -1,14 +1,10 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { headers, contactUrl } from "../config";
 import axios from "axios";
-import { IContact, IRequest } from "../model";
+import { contactState, IContact, IRequest } from "../model";
 
 
-interface contactState {
-  requests: IRequest[];
-  status: string;
-  error: string | null;
-}
+
 
 const initialState: contactState = {
   requests: [],
@@ -45,7 +41,7 @@ export const sendContactRequest = createAsyncThunk(
         .addCase(sendContactRequest.pending, (state) => {
           state.status = "loading";
         })
-        .addCase(sendContactRequest.fulfilled, (state, action) => {
+        .addCase(sendContactRequest.fulfilled, (state, action:PayloadAction<IRequest>) => {
           state.status = "succeeded";
           state.requests.push(action.payload);
         })
