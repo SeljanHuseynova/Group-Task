@@ -1,35 +1,21 @@
 import React from "react";
-import { cancelReservation, fetchTables} from "../redux/reservationSlice";
+import { useTablesContext } from "../context/TablesProvider";
 import { toast } from "react-toastify";
-import { GoArrowRight } from "react-icons/go";
-import { AppDispatch } from "../redux/store";
-import { ICustomerData, Table } from "../model";
+import { cancelReservation, fetchTables } from "../redux/reservationSlice";
 
-interface ITablesNotAvailable {
-  isCancel: boolean;
-  validate: () => boolean;
-  setIsCancel: React.Dispatch<React.SetStateAction<boolean>>;
-  selectedTable: Table | null;
-  dispatch: AppDispatch;
-  setCustomerData: React.Dispatch<React.SetStateAction<ICustomerData>>;
-  customerData: ICustomerData;
-  setIsModal: React.Dispatch<React.SetStateAction<boolean>>;
-  errors: ICustomerData;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+const TableNotAvailable: React.FC = () => {
+  const {
+    validate,
+    handleChange,
+    isCancel,
+    setIsCancel,
+    selectedTable,
+    dispatch,
+    customerData,
+    setCustomerData,
+    closeModal,
+  } = useTablesContext();
 
-const TableNotAvailable: React.FC<ITablesNotAvailable> = ({
-  isCancel,
-  validate,
-  setIsCancel,
-  selectedTable,
-  dispatch,
-  setCustomerData,
-  customerData,
-  setIsModal,
-  errors,
-  handleChange,
-}) => {
   const handleCancel = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -38,16 +24,17 @@ const TableNotAvailable: React.FC<ITablesNotAvailable> = ({
     }
 
     if (
+      selectedTable &&
       selectedTable?.name?.trim() === customerData.name &&
       selectedTable?.surname?.trim() === customerData.surname &&
       selectedTable?.phoneNumber?.trim() === customerData.phoneNumber
     ) {
-      dispatch(cancelReservation({ tableId: selectedTable.id || 0 }))
+      dispatch(cancelReservation({ tableId: selectedTable.id }))
         .then(() => {
           toast.success("Reservation canceled successfully!");
           dispatch(fetchTables());
           setCustomerData({ name: "", surname: "", phoneNumber: "" });
-          setIsModal(false);
+          closeModal();
           setIsCancel(false);
         })
         .catch((error) => {
@@ -70,7 +57,6 @@ const TableNotAvailable: React.FC<ITablesNotAvailable> = ({
             onChange={handleChange}
             value={customerData.name || ""}
           />
-          {errors.name && <p className="error">{errors.name}</p>}
           <label>Surname</label>
           <input
             type="text"
@@ -78,7 +64,6 @@ const TableNotAvailable: React.FC<ITablesNotAvailable> = ({
             onChange={handleChange}
             value={customerData.surname || ""}
           />
-          {errors.surname && <p className="error">{errors.surname}</p>}
           <label>PhoneNumber</label>
           <input
             name="phoneNumber"
@@ -86,18 +71,18 @@ const TableNotAvailable: React.FC<ITablesNotAvailable> = ({
             onChange={handleChange}
             value={customerData.phoneNumber || ""}
           />
-          {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
           <button className="cancel-btn">Cancel Reservation</button>
         </form>
       ) : (
         <>
           <p>This table is not available</p>
           <button onClick={() => setIsCancel(true)} className="cancel-btn">
-            Cancel <GoArrowRight className="arrow" />
+            Cancel
           </button>
         </>
       )}
     </div>
   );
 };
+
 export default TableNotAvailable;

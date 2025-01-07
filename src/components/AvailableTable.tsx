@@ -1,30 +1,19 @@
 import React from "react";
+import { useTablesContext } from "../context/TablesProvider";
 import { toast } from "react-toastify";
 import { bookATable, fetchTables } from "../redux/reservationSlice";
-import { AppDispatch } from "../redux/store";
-import { ICustomerData, Table } from "../model";
 
-interface TableAvailableProps {
-  validate: () => boolean;
-  dispatch: AppDispatch;
-  selectedTable: Table | null;
-  customerData: ICustomerData;
-  setCustomerData: React.Dispatch<React.SetStateAction<ICustomerData>>;
-  setIsModal: React.Dispatch<React.SetStateAction<boolean>>;
-  errors: ICustomerData;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-const AvailableTable: React.FC<TableAvailableProps> = ({
-  validate,
-  dispatch,
-  selectedTable,
-  customerData,
-  setCustomerData,
-  setIsModal,
-  errors,
-  handleChange,
-}) => {
-    
+const AvailableTable: React.FC = () => {
+  const {
+    validate,
+    handleChange,
+    dispatch,
+    selectedTable,
+    customerData,
+    setCustomerData,
+    closeModal,
+  } = useTablesContext();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -32,35 +21,22 @@ const AvailableTable: React.FC<TableAvailableProps> = ({
       return;
     }
 
-    toast.success("Reservation was successful!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
+    toast.success("Reservation was successful!");
 
     dispatch(
       bookATable({
         tableId: selectedTable?.id || 0,
         customerData: {
-          name: customerData?.name?.trim() || "",
+          name: customerData?.name?.trim(),  // look at this point too
           surname: customerData?.surname?.trim(),
-          phoneNumber: customerData?.phoneNumber?.trim() || "",
+          phoneNumber: customerData?.phoneNumber?.trim(),
         },
       })
     )
       .then(() => {
         dispatch(fetchTables());
-        setCustomerData({
-          name: "",
-          surname: "",
-          phoneNumber: "",
-        });
-        setIsModal(false);
+        setCustomerData({ name: "", surname: "", phoneNumber: "" });
+        closeModal();
       })
       .catch((error) => {
         console.error("Error booking table:", error);
@@ -77,8 +53,6 @@ const AvailableTable: React.FC<TableAvailableProps> = ({
           onChange={handleChange}
           value={customerData.name || ""}
         />
-        {errors.name && <p className="error">{errors.name}</p>}
-
         <label>Surname</label>
         <input
           type="text"
@@ -86,17 +60,13 @@ const AvailableTable: React.FC<TableAvailableProps> = ({
           onChange={handleChange}
           value={customerData.surname || ""}
         />
-        {errors.surname && <p className="error">{errors.surname}</p>}
-
-        <label>PhoneNumber</label>
+        <label>Phone Number</label>
         <input
-          name="phoneNumber"
           type="text"
+          name="phoneNumber"
           onChange={handleChange}
           value={customerData.phoneNumber || ""}
         />
-        {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
-
         <button type="submit">Book A Table</button>
       </form>
     </div>

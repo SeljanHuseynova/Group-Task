@@ -6,14 +6,14 @@ import About from "./pages/About";
 import Reservation from "./pages/Reservation";
 import Meals from "./pages/Meals";
 import Contact from "./pages/Contact";
-import NotFoundPage from "./pages/NotFoundPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ScrollToTop from "./components/ScrollTop";
+import TablesProvider from "./context/TablesProvider";
 
 function App() {
   return (
-    <>
+    <TablesProvider>
       <Navbar />
       <ScrollToTop />
       <Routes>
@@ -22,11 +22,10 @@ function App() {
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/meals" element={<Meals />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
       <ToastContainer />
-    </>
+    </TablesProvider>
   );
 }
 

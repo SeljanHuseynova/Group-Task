@@ -2,20 +2,16 @@ import React from "react";
 import tablePhoto from "../assets/images/table2.jpg";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import { Table } from "../model";
+import { useTablesContext } from "../context/TablesProvider";
 
-interface TablesContainerProps {
-  openModal: (table: Table) => void;
-}
-
-const TablesContainer: React.FC<TablesContainerProps> = ({ openModal }) => {
+const TablesContainer: React.FC = () => {
+  const { openModal} = useTablesContext();
   const { tables, error, status } = useSelector((state: RootState) => state.rootReducer.reservation);
-
   return (
     <div className="tables row container g-4">
       {status === "loading" && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      {tables?.map((table: Table) => (
+      {tables?.map((table) => (
         <div className="col-6 col-lg-3" key={table.id}>
           <div className="table" onClick={() => openModal(table)}>
             <div className="overlay">
@@ -25,9 +21,7 @@ const TablesContainer: React.FC<TablesContainerProps> = ({ openModal }) => {
               </div>
             </div>
           </div>
-          <div className="tables-details">
-            Table ID: {table.id}
-          </div>
+          <div className="tables-details">Table ID: {table.id}</div>
         </div>
       ))}
     </div>
