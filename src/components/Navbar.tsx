@@ -1,10 +1,10 @@
 import { FaPhone } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineMailOutline } from "react-icons/md";
-import "../assets/style/.navbar.css";
 import logo from "../assets/images/pt-logo.svg";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { Link } from "react-router";
+import { RiMenu3Line } from "react-icons/ri";
+
 
 const Navbar = () => {
   return (
@@ -29,7 +29,9 @@ const Navbar = () => {
         aria-label="Offcanvas navbar large"
       >
         <div className="container-fluid">
+          <Link to='/'>
           <img src={logo} alt="pt-logo" className="logo" />
+          </Link>
 
           <button
             className="navbar-toggler"
@@ -38,7 +40,7 @@ const Navbar = () => {
             data-bs-target="#offcanvasNavbar2"
             aria-controls="offcanvasNavbar2"
           >
-            <HiOutlineMenuAlt3 />
+       <RiMenu3Line />
           </button>
           <div
             className="offcanvas offcanvas-end text-bg-dark"

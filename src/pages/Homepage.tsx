@@ -1,13 +1,9 @@
-import '../assets/style/homepage.css'
+import HeroHome from "../components/HeroHome";
 const Homepage = () => {
   return (
-    <div className='bg-container mb-5'>
-    <div className="bg-image">
-      <div className="overlay">
-        <h1>Contact us</h1>
-      </div>
-    </div>
-    </div>
+    <>
+      <HeroHome />
+    </>
   );
 };
 

@@ -1,13 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { headers, reservUrl } from "../config";
 import axios from "axios";
-import { ICustomerData, Table } from "../model";
-
-interface ReservationState {
-  tables: Table[];
-  status: string;
-  error: string | null;
-}
+import { ICustomerData, ReservationState, Table } from "../model";
 
 const initialState: ReservationState = {
   tables: [],
@@ -84,18 +78,21 @@ const reservationSlice = createSlice({
       .addCase(fetchTables.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchTables.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.tables = action.payload;
-      })
+      .addCase(
+        fetchTables.fulfilled,
+        (state, action: PayloadAction<Table[]>) => {
+          state.status = "succeeded";
+          state.tables = action.payload;
+        }
+      )
       .addCase(fetchTables.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload as any;
+        state.error = action.payload as string;
       })
       .addCase(bookATable.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(bookATable.fulfilled, (state, action) => {
+      .addCase(bookATable.fulfilled, (state, action: PayloadAction<Table>) => {
         state.status = "succeeded";
         const updatedTable = action.payload;
         state.tables = state.tables.map((table) =>
@@ -104,19 +101,22 @@ const reservationSlice = createSlice({
       })
       .addCase(bookATable.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload as any;
+        state.error = action.payload as string;
       })
 
       .addCase(cancelReservation.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(cancelReservation.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        const updatedTable = action.payload;
-        state.tables = state.tables.map((table) =>
-          table.id === updatedTable.id ? updatedTable : table
-        );
-      })
+      .addCase(
+        cancelReservation.fulfilled,
+        (state, action: PayloadAction<Table>) => {
+          state.status = "succeeded";
+          const updatedTable = action.payload;
+          state.tables = state.tables.map((table) =>
+            table.id === updatedTable.id ? updatedTable : table
+          );
+        }
+      )
       .addCase(cancelReservation.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload as any;
