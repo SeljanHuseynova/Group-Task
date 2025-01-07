@@ -1,50 +1,137 @@
+.bg-container {
+  margin-top: 550px;
 
-  
-  .bg-container {
-    margin-top: 550px;
-  
-    .bg-image {
-      width: 100% !important;
-      height: 100vh;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      position: absolute;
-      top: 0;
-      z-index: -1;
-  
-      animation: pulse-bg 10s infinite ease-in-out;
-      @media (max-width:885px) {
-        animation: none;
-      }
-  
-      .overlay {
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
-        position: relative;
-        z-index: 1;
+  .bg-image {
+    width: 100% !important;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+
+    animation: pulse-bg 10s infinite ease-in-out;
+    @media (max-width: 885px) {
+      animation: none;
+    }
+
+    .overlay {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .content {
+        margin-top: 80px;
+        width: 80%;
+        @media (max-width: 500px) {
+          width: 100%;
+        }
         display: flex;
-        justify-content: center;
         align-items: center;
-  
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+        @media (max-width: 1200px) {
+          margin-top: 130px;
+        }
+        @media (max-width: 960px) {
+          margin-top: 100px !important;
+        }
+        @media (max-width: 530px) {
+          margin-top: 110px !important;
+        }
         h1 {
+          font-size: 90px;
+          font-family: "Cormorant Garamond", serif;
+          line-height: 5rem;
+          font-weight: 600;
+          @media (max-width: 1200px) {
+            line-height: 5.3rem;
+            font-size: 80px;
+          }
+          @media (max-width: 960px) {
+            line-height: 5rem;
+            font-size: 70px;
+          }
+          @media (max-width: 675px) {
+            font-size: 60px;
+          }
+          @media (max-width: 530px) {
+            font-size: 50px;
+          }
+          @media (max-width: 420px) {
+            font-size: 45px;
+            line-height: 4.5rem;
+          }
+        }
+        h5 {
+          @media (max-width: 610px) {
+            font-size: 16px;
+          }
+          &:before,
+          &:after {
+            display: inline-block;
+            content: "";
+            border-top: 0.001rem solid #fff;
+            border-radius: 10px;
+            width: 4.5rem;
+            margin: 0px 25px;
+            transform: translateY(-0.4rem);
+            @media (max-width: 540px) {
+              margin: 0px 15px;
+            }
+            @media (max-width: 391px) {
+             width: 4rem;
+            }
+          }
+        }
+        * {
           color: #fff;
-          font-size: 3rem;
+          margin: 0;
+          text-align: center;
+        }
+        p {
+          font-size: 20px;
+          @media (max-width: 960px) {
+            font-size: 18px;
+          }
+          @media (max-width: 420px) {
+            font-size: 15px;
+          }
+        }
+        #menus-btn {
+          background-color: #dd5903;
+          text-decoration: none;
+          padding: 8px 27px;
+          font-weight: 460;
+          font-size: 16px;
+          @media (max-width: 540px) {
+            font-size: 14px;
+          }
         }
       }
+
+      h1 {
+        color: #fff;
+        font-size: 3rem;
+      }
     }
   }
-  
-  @keyframes pulse-bg {
-    0% {
-      background-size: 100%;
-    }
-    50% {
-      background-size: 105%; 
-    }
-    100% {
-      background-size: 100%; 
-    }
+}
+
+@keyframes pulse-bg {
+  0% {
+    background-size: 100%;
   }
-  
+  50% {
+    background-size: 105%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}

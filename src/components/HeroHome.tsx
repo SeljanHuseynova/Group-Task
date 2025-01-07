@@ -5,6 +5,7 @@ import bg1 from "../assets/images/homepage_bg.jpg";
 import bg2 from "../assets/images/bghome2.jpg";
 import bg3 from "../assets/images/bg3.jpg";
 import bg4 from "../assets/images/bg4.jpg";
+import { Link } from "react-router";
 
 const Homepage: React.FC = () => {
   const [currentImage, setCurrentImage] = useState<number>(0);
@@ -34,7 +35,14 @@ const Homepage: React.FC = () => {
         data-aos="fade-in"
       >
         <div className="overlay" data-aos="fade-up">
-          <h1 data-aos="fade-down">WELCOME TO HOMEPAGE</h1>
+          <div className="content">
+            <h5>WELCOME TO PATIOTIME</h5>
+            <h1>Delicious Food & Wonderful Eating Experience</h1>
+            <p>We Serve Food, Harmony, & Laughter Since 1998</p>
+            <Link to="/meals" id="menus-btn">
+              VIEW FULL MENUS
+            </Link>
+          </div>
         </div>
       </div>
     </div>
