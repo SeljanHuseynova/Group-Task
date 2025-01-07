@@ -1,4 +1,4 @@
-import "../assets/style/notFound.css";
+
 const NotFoundPage = () => {
   return (
     <div className="notFound">

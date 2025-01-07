@@ -1,7 +1,6 @@
 import { FaPhone } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineMailOutline } from "react-icons/md";
-import "../assets/style/.navbar.css";
 import logo from "../assets/images/pt-logo.svg";
 import { Link } from "react-router";
 import { RiMenu3Line } from "react-icons/ri";

@@ -12,9 +12,9 @@ const HeroReserv: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-image-reserv">
-      <div className="overlay" data-aos="fade-in">
-        <h1 data-aos="zoom-in">ONLINE RESERVATION</h1>
+    <div className="bg-image-reserv" data-aos='slide-down'>
+      <div className="overlay" data-aos="fade-up">
+        <h1 data-aos="fade-down">ONLINE RESERVATION</h1>
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import { FaFacebookF, FaPhone, FaPinterest } from "react-icons/fa";
-import "../assets/style/footer.css";
 import { FaXTwitter } from "react-icons/fa6";
 import { GrInstagram } from "react-icons/gr";
 import { AiFillYoutube } from "react-icons/ai";
