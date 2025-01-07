@@ -12,35 +12,38 @@ const AvailableTable: React.FC = () => {
     customerData,
     setCustomerData,
     closeModal,
+    errors,
   } = useTablesContext();
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validate()) {
+      toast.error("Please correct the errors in the form.");
       return;
     }
 
     toast.success("Reservation was successful!");
-
-    dispatch(
-      bookATable({
-        tableId: selectedTable?.id || 0,
-        customerData: {
-          name: customerData?.name?.trim(),  // look at this point too
-          surname: customerData?.surname?.trim(),
-          phoneNumber: customerData?.phoneNumber?.trim(),
-        },
-      })
-    )
-      .then(() => {
-        dispatch(fetchTables());
-        setCustomerData({ name: "", surname: "", phoneNumber: "" });
-        closeModal();
-      })
-      .catch((error) => {
-        console.error("Error booking table:", error);
-      });
+    if (selectedTable) {
+      dispatch(
+        bookATable({
+          tableId: selectedTable?.id,
+          customerData: {
+            name: customerData?.name?.trim(),
+            surname: customerData?.surname?.trim(),
+            phoneNumber: customerData?.phoneNumber?.trim(),
+          },
+        })
+      )
+        .then(() => {
+          dispatch(fetchTables());
+          setCustomerData({ name: "", surname: "", phoneNumber: "" });
+          closeModal();
+        })
+        .catch((error) => {
+          console.error("Error booking table:", error);
+          toast.error("An error occurred while booking the table.");
+        });
+    }
   };
 
   return (
@@ -53,6 +56,9 @@ const AvailableTable: React.FC = () => {
           onChange={handleChange}
           value={customerData.name || ""}
         />
+
+        {errors.name && <p className="error">{errors.name}</p>}
+
         <label>Surname</label>
         <input
           type="text"
@@ -60,6 +66,9 @@ const AvailableTable: React.FC = () => {
           onChange={handleChange}
           value={customerData.surname || ""}
         />
+
+        {errors.surname && <p className="error">{errors.surname}</p>}
+
         <label>Phone Number</label>
         <input
           type="text"
@@ -67,6 +76,9 @@ const AvailableTable: React.FC = () => {
           onChange={handleChange}
           value={customerData.phoneNumber || ""}
         />
+
+        {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
+
         <button type="submit">Book A Table</button>
       </form>
     </div>

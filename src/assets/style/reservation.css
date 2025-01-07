@@ -148,6 +148,7 @@
 }
 
 form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -161,9 +162,9 @@ form input {
 }
 form button {
   font-size: 700;
-  background-color: #DD5903;
+  background-color: #dd5903;
   color: #fff !important;
-  margin-top: 6px;
+  margin-top: 10px;
   font-size: 15px;
   outline: none;
   border: none;
@@ -172,10 +173,11 @@ form button {
   padding: 6px 40px;
 }
 form .error {
-  font-weight: bold;
-  font-size: 14.5px !important;
+  font-weight: 400;
+  font-size: 11px !important;
   margin: 0 !important;
-  color: red;
+  color: red !important;
+  font-family: "Jost", serif !important;
 }
 
 .error {
@@ -183,8 +185,8 @@ form .error {
 }
 
 .cancel-btn {
-  font-size: 700;
-  background-color: #DD5903;
+  font-weight: 500;
+  background-color: #dd5903;
   color: #fff !important;
   margin-top: 6px;
   font-size: 15px;
@@ -193,6 +195,11 @@ form .error {
   border-radius: 10px;
   align-self: center;
   padding: 6px 40px;
+}
+.cancel-btn .arrow {
+  margin-bottom: 1px;
+  margin-left: -3px;
+  font-size: 17px !important;
 }
 .cancel-btn .arrow {
   margin-left: 4px;
@@ -222,6 +229,16 @@ form .error {
   max-width: 400px;
   width: 90%;
 }
+.modal-content h5 {
+  margin-top: -10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: "Cormorant Garamond", serif !important;
+  color: #80441b;
+  margin-bottom: 1rem;
+  text-align: center;
+  line-height: 1.4;
+}
 @media (max-width: 420px) {
   .modal-content {
     padding: 1.2rem;
@@ -230,7 +247,7 @@ form .error {
 }
 
 .modal-content span {
-  color: #DD5903 !important;
+  color: #dd5903 !important;
 }
 @media (max-width: 420px) {
   .modal-content span {
