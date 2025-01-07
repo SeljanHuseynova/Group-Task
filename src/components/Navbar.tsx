@@ -29,7 +29,9 @@ const Navbar = () => {
         aria-label="Offcanvas navbar large"
       >
         <div className="container-fluid">
+          <Link to='/'>
           <img src={logo} alt="pt-logo" className="logo" />
+          </Link>
 
           <button
             className="navbar-toggler"

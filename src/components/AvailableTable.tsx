@@ -48,6 +48,7 @@ const AvailableTable: React.FC = () => {
 
   return (
     <div className="available">
+      <p>*Please do not forgot your details.</p>
       <form onSubmit={handleSubmit}>
         <label>Name</label>
         <input
